@@ -1,0 +1,25 @@
+{% extends "layouts/layout.jinja" %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="row">
+            <h1> Users </h1>
+        </div>
+        <div class="row">
+            <form action="{{ url_for("nosql.users") }}" method="get">
+                <div class="form-group">
+                    <label for="search_query">Search</label>
+                    <input type="text" class="form-control" name="search_query">
+                </div>
+            </form>
+            <hr>
+        </div>
+        <ul>
+            {% for user in users %}
+                <li> {{ user }} - {{ users[user] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

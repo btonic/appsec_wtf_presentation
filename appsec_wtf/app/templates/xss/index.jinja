@@ -32,7 +32,7 @@
                     }}
                 </a>
                 <br>
-                <a href="{{ url_for("xss.stored", code="param") }}">
+                <a href="{{ url_for("xss.stored", code="param".encode("base64")) }}">
                     {{
                         url_for(
                             "xss.stored",
@@ -41,7 +41,7 @@
                     }}
                 </a> (Note: This requires base64 values)
                 <br>
-                <a href="{{ url_for("xss.reflective", code="param")}}">
+                <a href="{{ url_for("xss.reflective", code="param".encode("base64"))}}">
                     {{
                         url_for(
                             "xss.reflective",

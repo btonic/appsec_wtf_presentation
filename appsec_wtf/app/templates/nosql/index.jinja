@@ -1,0 +1,43 @@
+{% extends "layouts/layout.jinja" %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="row text-center">
+            <h1> NoSQL Injection </h1>
+            <hr>
+        </div>
+        <div class="row">
+            <blockquote>
+                <p>Lol SQL injection, I use NoSQL so it can't be injected.</p>
+                <footer>Some skid</footer>
+            </blockquote>
+        </div>
+        <div class="row">
+            <p>
+            Since we don't use SQL, we obviously don't need to worry about
+            these URLS:
+            </p>
+            <div class="col-lg-12 well">
+                <a href="{{ url_for("nosql.index") }}">
+                    {{
+                        url_for("nosql.index")
+                    }}
+                </a>
+                <br>
+                <a href="{{ url_for("nosql.users") }}">
+                    {{
+                        url_for("nosql.users")
+                    }}
+                </a>
+                <br>
+                <a href="{{ url_for("nosql.reset_users") }}">
+                    {{
+                        url_for("nosql.reset_users")
+                    }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

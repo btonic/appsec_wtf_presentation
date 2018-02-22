@@ -27,7 +27,7 @@
                 see.
             </p>
             <div class="well text-left">
-                <a href="{{ url_for("css.inject", css="css") }}">
+                <a href="{{ url_for("css.inject", css="css".encode("base64")) }}">
                     {{
                         url_for(
                             "css.inject",
