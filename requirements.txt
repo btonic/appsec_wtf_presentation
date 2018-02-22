@@ -2,3 +2,4 @@ Flask
 graphene>=2.0
 redis
 pdoc
+honcho
