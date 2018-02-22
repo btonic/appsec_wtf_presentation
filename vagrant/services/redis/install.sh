@@ -1,1 +1,1 @@
-apt-get install redis-server redis-cli -y
+apt-get install redis-server -y

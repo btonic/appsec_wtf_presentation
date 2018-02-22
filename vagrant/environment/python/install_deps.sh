@@ -1,1 +1,1 @@
-apt-get install python-pip virtualenv-wrapper -y
+apt-get install python-pip virtualenvwrapper -y
