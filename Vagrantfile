@@ -3,6 +3,14 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
+  ############################################################################
+  # Networking
+  ############################################################################
+  # Port forward the default wtf app
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  # Port forward the callback server
+  config.vm.network "forwarded_port", guest: 8000, host: 8000
+
 
   # Update the apt repositories before other installations occur
   config.vm.provision :shell, inline: "apt-get update"

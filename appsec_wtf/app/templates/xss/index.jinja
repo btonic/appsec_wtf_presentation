@@ -1,0 +1,64 @@
+{% extends "layouts/layout.jinja" %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="row">
+            <h1 class="text-center"> XSS Injection</h1>
+            <hr>
+        </div>
+        <div class="row">
+            <blockquote>
+                <p>
+                    {{ reflective_xss }}
+                    {{ stored_xss }}
+                </p>
+                <footer>
+                    A Bored Infosec Researcher
+                </footer>
+            </blockquote>
+        </div>
+        <div class="row">
+            <p>
+                Perhaps taking a look at some routes might help you find some
+                answers.
+            </p>
+            <div class="well text-center">
+                <a href="{{ url_for("xss.index") }}">
+                    {{
+                        url_for(
+                            "xss.index"
+                        )
+                    }}
+                </a>
+                <br>
+                <a href="{{ url_for("xss.stored", code="param") }}">
+                    {{
+                        url_for(
+                            "xss.stored",
+                            code="param"
+                        )
+                    }}
+                </a>
+                <br>
+                <a href="{{ url_for("xss.reflective", code="param")}}">
+                    {{
+                        url_for(
+                            "xss.reflective",
+                            code="param"
+                        )
+                    }}
+                </a>
+                <br>
+                <a href="{{ url_for("xss.reset") }}">
+                    {{
+                        url_for(
+                            "xss.reset"
+                        )
+                    }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

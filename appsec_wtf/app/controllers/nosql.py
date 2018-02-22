@@ -5,7 +5,7 @@ from flask import Blueprint, render_template, abort
 from jinja2 import TemplateNotFound
 
 bp = Blueprint('nosql', __name__,
-                template_folder='../templates/nosql')
+                template_folder='../templates')
 
 @bp.route("/", methods=["GET"])
 def index():

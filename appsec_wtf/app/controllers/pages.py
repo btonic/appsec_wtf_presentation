@@ -1,22 +1,18 @@
 """
-TODO: DOC
+Controller for the default pages endpoint. Handles the routes:
+
+    /
+
 """
 from flask import Blueprint, render_template, abort
 from jinja2 import TemplateNotFound
 
-bp = Blueprint('css', __name__,
+bp = Blueprint('pages', __name__,
                 template_folder='../templates')
 
 @bp.route("/", methods=["GET"])
 def index():
     """
-    TODO: DOC
+    Handles the root hopmepage rendering.
     """
-    pass
-
-@bp.route("/inject", methods=["POST"])
-def post_inject():
-    """
-    TODO: DOC
-    """
-    pass
+    return render_template("pages/index.jinja")

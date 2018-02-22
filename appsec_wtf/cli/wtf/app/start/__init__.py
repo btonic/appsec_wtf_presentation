@@ -2,6 +2,8 @@
 Start the application web server.
 """
 
+from appsec_wtf.app import app
+
 def set_cli_opts(parser):
     """
     Configure CLI options for this CLI entrypoint.
@@ -24,9 +26,21 @@ def set_cli_opts(parser):
         %(default)s.
         """
     )
+    parser.add_argument(
+        "--debug",
+        default=False,
+        action="store_true",
+        help="""
+        Enable debugging. Default is %(default)s.
+        """
+    )
 
 def entry(args):
     """
     The entry point for this command.
     """
-    pass
+    app.run(
+        debug=args.debug,
+        host=args.host,
+        port=args.port
+    )
