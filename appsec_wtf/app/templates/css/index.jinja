@@ -1,0 +1,60 @@
+{% extends "layouts/layout.jinja" %}
+
+{% block css %}
+
+{% if css_injection %}
+    {{ css_injection }}
+{% endif %}
+
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="row text-center">
+            <h1> CSS Injection </h1>
+            <hr>
+        </div>
+        <div class="row">
+            <blockquote>
+            <p> Javascript is bad. CSS is worse. </p>
+            <footer>Everyone</footer>
+            </blockquote>
+        </div>
+        <div class="row">
+            <p>
+                Maybe these routes will change some opinions on CSS... We'll
+                see.
+            </p>
+            <div class="well text-left">
+                <a href="{{ url_for("css.inject", css="css") }}">
+                    {{
+                        url_for(
+                            "css.inject",
+                            css="css"
+                        )
+                    }}
+                </a>
+                (Note: This requires base64 encoded values)
+                <br>
+                <a href="{{ url_for("css.reset") }}">
+                    {{
+                        url_for(
+                            "css.reset"
+                        )
+                    }}
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <h2> What is a sweet darkweb marketplace username? </h2>
+            <hr>
+        </div>
+        <div class="row">
+            <form>
+                <input name="username" id="username" type="text" class="col-lg-12" value="{{ request.args.get("username") or "" }}" />
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

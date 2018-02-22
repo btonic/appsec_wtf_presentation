@@ -1,40 +1,24 @@
 """
-Generate XSS injection payloads.
+Generate various payloads for XSS injection.
 """
+
+import encode
+import turndownforwhat_example
 
 def set_cli_opts(parser):
     """
     TODO: DOC
     """
-    parser.set_defaults(func=entry)
+    xss_subparsers = parser.add_subparsers()
 
-    parser.add_argument(
-        "--host",
-        default="localhost",
-        help="""
-        Set the host that should be used in the generated payload. Default is
-        %(default)s.
-        """
+    encode_xss_subparser = xss_subparsers.add_parser(
+        "encode",
+        help=encode.__doc__
     )
-    parser.add_argument(
-        "--port",
-        default=3000,
-        help="""
-        Set the port that should be used in the generated payload. Default is
-        %(default)s.
-        """
-    )
-    parser.add_argument(
-        "--endpoint",
-        default="/",
-        help="""
-        Set the endpoint that should be used in the generated payload. Default
-        is %(default)s.
-        """
-    )
+    encode.set_cli_opts(encode_xss_subparser)
 
-def entry(args):
-    """
-    TODO: DOC
-    """
-    pass
+    turndownforwhat_example_xss_subparser = xss_subparsers.add_parser(
+        "turndownforwhat_example",
+        help=turndownforwhat_example.__doc__
+    )
+    turndownforwhat_example.set_cli_opts(turndownforwhat_example_xss_subparser)

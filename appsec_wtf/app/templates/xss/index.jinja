@@ -23,7 +23,7 @@
                 Perhaps taking a look at some routes might help you find some
                 answers.
             </p>
-            <div class="well text-center">
+            <div class="well text-left">
                 <a href="{{ url_for("xss.index") }}">
                     {{
                         url_for(
@@ -39,7 +39,7 @@
                             code="param"
                         )
                     }}
-                </a>
+                </a> (Note: This requires base64 values)
                 <br>
                 <a href="{{ url_for("xss.reflective", code="param")}}">
                     {{
@@ -48,7 +48,7 @@
                             code="param"
                         )
                     }}
-                </a>
+                </a> (Note: This requires base64 values)
                 <br>
                 <a href="{{ url_for("xss.reset") }}">
                     {{

@@ -36,10 +36,12 @@ def index():
     return render_template(
         "xss/index.jinja",
         stored_xss=app.config["redis"].get("STORED_XSS") or DEFAULT_STORED,
-        reflective_xss=request.args.get("reflective_xss", DEFAULT_REFLECTIVE)
+        reflective_xss=request.args.get("reflective_xss", None).decode("base64")
+                       if request.args.get("reflective_xss", None)
+                       else DEFAULT_REFLECTIVE
     )
 
-@bp.route("/reflective/<code>", methods=["GET"])
+@bp.route("/reflective/<path:code>", methods=["GET"])
 def reflective(code=DEFAULT_REFLECTIVE):
     """
     Redirect to the index page with the `reflective_xss` parameter set.
@@ -48,7 +50,7 @@ def reflective(code=DEFAULT_REFLECTIVE):
         url_for("xss.index", reflective_xss=code)
     )
 
-@bp.route("/stored/<code>", methods=["GET"])
+@bp.route("/stored/<path:code>", methods=["GET"])
 def stored(code=DEFAULT_STORED):
     """
     Set the `STORED_XSS` key in Redis, then redirect to the index page. No
@@ -56,7 +58,7 @@ def stored(code=DEFAULT_STORED):
     code being pulled from the db within the `index` route.
     """
     # Set the stored_xss variable so that the homepage
-    app.config["redis"].set("STORED_XSS", code)
+    app.config["redis"].set("STORED_XSS", code.decode("base64"))
     return redirect(
         url_for("xss.index")
     )
