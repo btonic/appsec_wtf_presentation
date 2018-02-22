@@ -1,0 +1,2 @@
+wtf_app: wtf app start --debug
+cb_server: python -m SimpleHTTPServer
