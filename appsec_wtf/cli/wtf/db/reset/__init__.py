@@ -12,21 +12,21 @@ def set_cli_opts(parser):
         "--host",
         default="localhost",
         help="""
-        The host Redis is currently running on. Default is %(default)s
+        The host Redis is currently running on. Default is %(default)s.
         """
     )
     parser.add_argument(
         "--port",
         default=6379,
         help="""
-        The port the Redis instance is listening on. Default is %(default)s
+        The port the Redis instance is listening on. Default is %(default)s.
         """
     )
     parser.add_argument(
         "--db",
         default=0,
         help="""
-        The DB to reset on the redis instance. Default is %(default)s
+        The DB to reset on the redis instance. Default is %(default)s.
         """
     )
 

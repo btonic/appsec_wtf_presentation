@@ -1,1 +1,25 @@
 #!/usr/bin/python
+
+import argparse
+
+# Import the CLI configuration for this executable.
+import appsec_wtf.cli.exec_poc
+
+
+def main():
+    """
+    The entry-point for the `wtf` script.
+    """
+    parser = argparse.ArgumentParser()
+    # Set the default entrypoint for nothing.
+    parser.set_defaults(func=lambda x: None)
+    # Configure the CLI for this script.
+    cli.exec_poc.set_cli_opts(parser)
+
+    # Parse the CLI arguments.
+    args = parser.parse_args()
+    # Execute the entry point of the command being executed.
+    args.func(args)
+
+if __name__ == '__main__':
+    main()
