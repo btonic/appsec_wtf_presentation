@@ -18,7 +18,7 @@ def set_cli_opts(parser):
     )
     parser.add_argument(
         "--port",
-        default=8000,
+        default=3000,
         help="""
         Set the port that the application should listen on. Default is
         %(default)s.
